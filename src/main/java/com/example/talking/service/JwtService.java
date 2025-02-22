@@ -44,7 +44,7 @@ public class JwtService {
 
     public String generateRefreshToken(UserEntity user) {
         String refreshToken = generateToken(user, REFRESH_EXPIRATION);
-        user.setRefresh_token(refreshToken);
+        user.setRefreshToken(refreshToken);
         userRepository.save(user);
         return refreshToken;
     }

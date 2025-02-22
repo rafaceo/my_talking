@@ -27,7 +27,8 @@ public class UserEntity {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
-    private String refresh_token;
+    @Column(name = "refresh_token") // Соответствует названию в БД
+    private String refreshToken;    // Исправлено с refresh_token на refreshToken
     @Column(name = "createdAt", nullable = false)
     private LocalDateTime createdAt;
 }

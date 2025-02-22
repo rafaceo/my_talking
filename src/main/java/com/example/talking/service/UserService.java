@@ -24,7 +24,7 @@ public class UserService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .refresh_token(null)
+                .refreshToken(null)
                 .createdAt(LocalDateTime.now())
                 .build();
 
