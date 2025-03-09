@@ -1,3 +1,22 @@
+// document.addEventListener("DOMContentLoaded", async () => {
+//     try {
+//         const response = await fetch("http://localhost:8080/auth/check", {
+//             credentials: "include"
+//         });
+//
+//         if (!response.ok) {
+//             window.location.href = "login.html"; // Перенаправляем на страницу входа
+//             return;
+//         }
+//
+//         const user = await response.json();
+//         document.title = `Чат - ${user.username}`; // Меняем заголовок на имя юзера
+//     } catch (error) {
+//         console.error("Ошибка проверки авторизации", error);
+//         window.location.href = "login.html"; // Если ошибка — тоже отправляем на логин
+//     }
+// });
+
 document.addEventListener("DOMContentLoaded", async () => {
     const roomsContainer = document.getElementById("roomsContainer");
     const noRoomsMessage = document.getElementById("noRoomsMessage");

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     socket.onopen = async () => {
         console.log(`[LOG] WebSocket подключен к комнате: ${roomName}`);
         try {
-            const response = await fetch(`http://localhost:8080/messages?room=${roomName}`);
+            const response = await fetch(`http://localhost:8080/api/chat/${roomName}/messages`);
             const messages = await response.json();
             console.log(`[LOG] Загружена история сообщений (${messages.length} шт.)`);
             messages.forEach(msg => displayMessage(msg.username, msg.text, msg.timestamp));

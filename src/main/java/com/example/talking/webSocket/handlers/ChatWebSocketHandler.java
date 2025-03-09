@@ -58,7 +58,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
         messageService.saveMessage(receivedMessage.getUsername(), receivedMessage.getText(), getRoomName(session));
 
         for (WebSocketSession s : sessions.values()) {
-            if (s.isOpen()) {
+            if (s.isOpen() && !s.getId().equals(session.getId())) { // НЕ отправлять себе
                 s.sendMessage(new TextMessage(payload));
             }
         }
