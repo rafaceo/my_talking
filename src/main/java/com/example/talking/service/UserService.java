@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -29,6 +31,12 @@ public class UserService {
                 .build();
 
         return userRepository.save(user);
+    }
+
+    public String getUsernameByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .map(user -> user.getFirstName())
+                .orElseThrow(() -> new NoSuchElementException("Пользователь с email " + email + " не найден"));
     }
 
 

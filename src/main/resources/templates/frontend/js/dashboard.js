@@ -1,21 +1,28 @@
-// document.addEventListener("DOMContentLoaded", async () => {
-//     try {
-//         const response = await fetch("http://localhost:8080/auth/check", {
-//             credentials: "include"
-//         });
-//
-//         if (!response.ok) {
-//             window.location.href = "login.html"; // Перенаправляем на страницу входа
-//             return;
-//         }
-//
-//         const user = await response.json();
-//         document.title = `Чат - ${user.username}`; // Меняем заголовок на имя юзера
-//     } catch (error) {
-//         console.error("Ошибка проверки авторизации", error);
-//         window.location.href = "login.html"; // Если ошибка — тоже отправляем на логин
-//     }
-// });
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        console.log("Отправляем токен:", localStorage.getItem("accessToken"));
+        const response = await fetch("http://localhost:8080/auth/check", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Неавторизованный доступ");
+        }
+
+        const user = await response.text();
+        console.log("Ответ сервера:", user);
+        document.title = `Чат - ${user.username}`;
+    } catch (error) {
+            console.error("Ошибка проверки авторизации", error);
+            alert("Ошибка авторизации: " + error.message); // Покажет ошибку перед редиректом
+            window.location.href = "login.html"
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     const roomsContainer = document.getElementById("roomsContainer");
@@ -68,27 +75,7 @@ async function joinRoom(name) {
         }
     }
 }
-document.addEventListener("DOMContentLoaded", async () => {
-    const roomsContainer = document.getElementById("roomList");
 
-    try {
-        const response = await fetch("http://localhost:8080/rooms/getAll");
-        const rooms = await response.json();
-
-        roomsContainer.innerHTML = "";
-
-        rooms.forEach(room => {
-            const roomElement = document.createElement("li");
-            roomElement.textContent = room.name;
-            roomElement.addEventListener("click", () => {
-                window.location.href = `chat.html?room=${room.name}`;
-            });
-            roomsContainer.appendChild(roomElement);
-        });
-    } catch (error) {
-        console.error("Ошибка загрузки комнат", error);
-    }
-});
 
 document.getElementById("createRoomBtn").addEventListener("click", () => {
     window.location.href = "create-room.html";

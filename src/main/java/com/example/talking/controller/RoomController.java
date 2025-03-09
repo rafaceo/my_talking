@@ -1,7 +1,9 @@
 package com.example.talking.controller;
 
 import com.example.talking.dto.RoomCreateRequest;
+import com.example.talking.entity.MessageEntity;
 import com.example.talking.entity.RoomEntity;
+import com.example.talking.service.MessageService;
 import com.example.talking.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
