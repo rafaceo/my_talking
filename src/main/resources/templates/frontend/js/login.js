@@ -10,7 +10,13 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         body: JSON.stringify({ email, password })
     });
 
-    const data = await response.json();
+    let data;
+    try {
+        data = await response.json();
+    } catch (error) {
+        console.error("Ошибка парсинга JSON:", error);
+        data = {};
+    }
 
     if (!response.ok) {
         document.getElementById("message").textContent = data.message || "Неверный email или пароль!";
