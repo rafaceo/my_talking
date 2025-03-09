@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #2C2F33;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.room {
+    background-color: #424549;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.room:hover {
+    background-color: #36393E;
+}
+
+.room.active {
+    background-color: #5865F2;
+}
+
+.room h3 {
+    margin: 0;
+}
+
+.chat-window {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#createRoomBtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #5865F2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#createRoomBtn:hover {
+    background-color: #4752C4;
+}

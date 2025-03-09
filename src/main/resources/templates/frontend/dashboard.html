@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Главная</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="container">
+	<div class="sidebar">
+		<h2>Комнаты</h2>
+		<div id="roomsContainer"></div>
+		<p id="noRoomsMessage" style="display: none;">Нет доступных комнат</p>
+		<button id="createRoomBtn">Создать комнату</button>
+	</div>
+	<div class="chat-window">
+		<h2 id="roomTitle">Выберите комнату</h2>
+		<p id="roomMessage">Выберите комнату слева, чтобы войти</p>
+	</div>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
